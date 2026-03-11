@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国分寺の美容室ならココ！ | COCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    /* 変数とベース設定 */
+    :root {
+        --mustard: #dca332;
+        --text-main: #333333;
+        --text-gray: #4a4a4a; /* より濃いグレーに変更 */
+        --bg-white: #ffffff;
+        --bg-light: #fdfbf7;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        color: var(--text-main);
+        background-color: var(--bg-white);
+        line-height: 1.6;
+    }
+    
+    .serif {
+        font-family: 'Noto Serif JP', serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* セクション共通 */
+    section {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .section-title {
+        text-align: center;
+        font-size: 28px;
+        color: var(--mustard);
+        margin-bottom: 50px;
+        letter-spacing: 2px;
+        font-weight: normal;
+    }
+
+    /* ヘッダー＆ロゴ */
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        box-sizing: border-box;
+        z-index: 1000;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+        color: var(--mustard);
+        font-weight: bold;
+        line-height: 1.1;
+    }
+    .logo-small {
+        display: block;
+        font-size: 16px; /* サイズを大きく変更 */
+        letter-spacing: 1px;
+    }
+    .logo-large {
+        display: block;
+        font-size: 36px; /* サイズを大きく変更 */
+        letter-spacing: 2px;
+    }
+
+    /* ハンバーガーメニュー */
+    .hamburger {
+        cursor: pointer;
+        width: 30px;
+        height: 22px;
+        position: relative;
+        z-index: 1001;
+    }
+    .hamburger span {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background-color: var(--mustard); /* マスタードイエローに変更 */
+        transition: 0.3s;
+    }
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 10px; }
+    .hamburger span:nth-child(3) { bottom: 0; }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* ナビゲーション */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--bg-white);
+        transition: 0.4s;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    }
+    .nav-menu.active {
+        right: 0;
+    }
+    .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .nav-menu li {
+        margin-bottom: 30px;
+    }
+    .nav-menu a {
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: var(--mustard); /* マスタードイエローに変更 */
+        transition: color 0.3s;
+    }
+    .nav-menu a:hover {
+        color: #c48f2a; /* ホバー時は少し濃いイエローに */
+    }
+
+    /* トップエリア */
+    #top {
+        padding-top: 120px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .catchphrase {
+        color: var(--text-gray);
+        font-size: 36px; /* サイズを大きく変更 */
+        line-height: 1.8;
+        text-align: center;
+        margin-top: 5vh;
+        margin-bottom: 40px;
+    }
+    @media (max-width: 600px) {
+        .catchphrase {
+            font-size: 24px; /* スマホサイズでも大きく変更 */
+        }
+    }
+    .main-image {
+        width: 100%;
+        max-width: 800px;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    /* コンセプト（手紙風） */
+    .letter-wrapper {
+        background-color: var(--bg-light);
+        padding: 40px 30px 40px 50px;
+        border: 1px solid #e8e4db;
+        border-radius: 2px;
+        box-shadow: 2px 4px 15px rgba(0,0,0,0.03);
+        margin-bottom: 40px;
+        position: relative;
+        /* 便箋の横罫線を追加 */
+        background-image: repeating-linear-gradient(transparent, transparent 39px, rgba(220, 163, 50, 0.3) 39px, rgba(220, 163, 50, 0.3) 40px);
+        background-attachment: local;
+    }
+    .letter-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 30px; bottom: 0;
+        /* 便箋の縦線（赤いアクセントのような役割）を追加 */
+        border-left: 2px double rgba(220, 163, 50, 0.4);
+        pointer-events: none;
+    }
+    .letter-text {
+        font-size: 16px;
+        line-height: 40px; /* 罫線の間隔(40px)にテキストをピッタリ合わせる */
+        color: var(--text-main);
+        margin: 0;
+        padding-top: 6px; /* 文字を線の上に綺麗に乗せるための微調整 */
+    }
+    .owner-name {
+        text-align: right;
+        margin-top: 40px;
+        font-size: 18px;
+    }
+    
+    .concept-image-wrapper {
+        text-align: center;
+    }
+    .concept-image {
+        width: 75%; /* 75%の大きさに変更 */
+        margin: 0 auto; /* 中央揃え */
+        border-radius: 4px;
+    }
+
+    /* ヘアスタイル（横スライド・額縁風） */
+    .slider-wrapper {
+        margin: 40px -20px; /* スワイプエリアの上下に余白を設ける */
+    }
+    .slider-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 10px 20px 30px 20px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .slider-container::-webkit-scrollbar {
+        height: 6px;
+    }
+    .slider-container::-webkit-scrollbar-thumb {
+        background: var(--mustard);
+        border-radius: 3px;
+    }
+    .slider-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    /* 額縁のデザイン */
+    .slider-item {
+        flex: 0 0 70%;
+        max-width: 280px;
+        scroll-snap-align: center;
+        background-color: #fafafa; /* マット紙の色 */
+        padding: 15px; /* マットの余白 */
+        border: 8px solid #3e2723; /* 額縁の木枠（濃い茶色） */
+        border-radius: 2px;
+        box-shadow: 4px 6px 12px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.05);
+        box-sizing: border-box;
+        margin: 20px 0; /* 上下に余白を追加 */
+    }
+    .slider-item img {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        display: block;
+        border: 1px solid #ddd; /* 写真のエッジ */
+        box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+    }
+
+    /* プライス・アクセス等（テーブル・リストデザイン） */
+    .info-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+    .price-category {
+        font-size: 20px;
+        color: #fff;
+        background-color: var(--mustard);
+        margin: 40px 0 15px 0;
+        padding: 8px 15px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+    .price-category:first-child {
+        margin-top: 0;
+    }
+    .price-list {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px; /* リスト下の余白を広めに */
+    }
+    .price-list th, .price-list td {
+        padding: 15px 10px;
+        border-bottom: 1px dashed #eee;
+        text-align: left;
+    }
+    .price-list tr:last-child th, .price-list tr:last-child td {
+        border-bottom: none;
+    }
+    .price-list th {
+        font-weight: bold;
+        color: var(--text-gray);
+    }
+    .price-list td {
+        text-align: right;
+        font-weight: bold;
+    }
+    
+    .access-info {
+        margin-bottom: 20px;
+        line-height: 2;
+    }
+    
+    /* マップコンテナのCSSを画像用に変更 */
+    .map-container {
+        width: 100%;
+        text-align: center;
+    }
+    .map-container img {
+        width: 50%;
+        margin: 0 auto;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    /* リザーブ用スタイル */
+    .reserve-details {
+        line-height: 2;
+        color: var(--text-main);
+    }
+    .reserve-phone {
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .tel-link {
+        display: block;
+        text-align: center;
+        font-size: 36px;
+        color: var(--mustard);
+        margin-bottom: 10px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .reserve-note {
+        font-size: 13px;
+        color: var(--text-gray);
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .reserve-heading {
+        font-size: 18px;
+        color: var(--mustard);
+        border-bottom: 2px solid #fcfaf5;
+        padding-bottom: 5px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+    .reserve-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .reserve-list li {
+        margin-bottom: 8px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .reserve-list li strong {
+        display: inline-block;
+        width: 80px; /* 見出しの幅を揃える */
+    }
+</style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <a href="#top" class="logo">
+            <span class="logo-small">国分寺の美容室なら</span>
+            <span class="logo-large">ココ！</span>
+        </a>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- ナビゲーションメニュー -->
+    <nav class="nav-menu" id="nav-menu">
+        <ul>
+            <li><a href="#top" class="nav-link">TOP</a></li>
+            <li><a href="#concept" class="nav-link">CONCEPT</a></li>
+            <li><a href="#hair-style" class="nav-link">HAIR STYLE</a></li>
+            <li><a href="#price" class="nav-link">PRICE</a></li>
+            <li><a href="#access" class="nav-link">ACCESS</a></li>
+            <li><a href="#reserve" class="nav-link">RESERVE</a></li>
+        </ul>
+    </nav>
+
+    <!-- トップエリア -->
+    <section id="top">
+        <h1 class="catchphrase serif">
+            ヘアスタイルや髪質などで<br>お悩みならご相談ください。
+        </h1>
+        <div class="main-image">
+            <img src="images/main.jpg" alt="国分寺の美容室 ココ！ メインイメージ" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fmain.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
+        </div>
+    </section>
+
+    <!-- コンセプト -->
+    <section id="concept">
+        <h2 class="section-title">CONCEPT</h2>
+        <div class="letter-wrapper serif">
+            <p class="letter-text">
+                国分寺駅近くの路地裏にある国分寺の美容室。「時間」と「場」をコンセプトにココ！という小さなスペースをご用意させていただきました。<br>
+                ココ！は、長年美容師として活躍してきた市塚晃一が始めた国分寺の美容室です。<br>
+                メンズからレディースまで様々な経験から得た柔軟な対応が得意です。<br>
+                皆様と一緒に豊かな時間を共有できることを心から楽しみにお待ちしております。<br>
+                あなたらしいスタイルを実現させるため、誠心誠意お手伝いさせていただきます！
+            </p>
+            <p class="owner-name">市塚 晃一</p>
+        </div>
+        <div class="concept-image-wrapper">
+            <img src="images/concept.jpg" alt="オーナーの想い" class="concept-image" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fconcept.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
+        </div>
+    </section>
+
+    <!-- ヘアスタイル -->
+    <section id="hair-style">
+        <h2 class="section-title">HAIR STYLE</h2>
+        <div class="slider-wrapper">
+            <div class="slider-container" id="slider">
+                <!-- JavaScriptで画像を動的に生成します（images/1.jpg 〜 13.jpg） -->
+            </div>
+        </div>
+    </section>
+
+    <!-- プライス -->
+    <section id="price">
+        <h2 class="section-title">PRICE</h2>
+        <div class="info-box">
+            
+            <h3 class="price-category">CUT</h3>
+            <table class="price-list">
+                <tr><th>ladys</th><td>¥6,000</td></tr>
+                <tr><th>mens</th><td>¥5,000</td></tr>
+            </table>
+
+            <h3 class="price-category">COLOR</h3>
+            <table class="price-list">
+                <tr><th>full</th><td>¥7,000〜</td></tr>
+                <tr><th>retouch</th><td>¥6,000〜</td></tr>
+                <tr><th>non domaine</th><td>¥4,600〜</td></tr>
+                <tr><th>hena</th><td>¥5,500〜</td></tr>
+            </table>
+
+            <h3 class="price-category">PARM</h3>
+            <table class="price-list">
+                <tr><th>ladys</th><td>¥13,000〜</td></tr>
+                <tr><th>mens</th><td>¥11,000〜</td></tr>
+                <tr><th>creep parm</th><td>¥15,000〜</td></tr>
+            </table>
+
+            <h3 class="price-category">STRAIGHT</h3>
+            <table class="price-list">
+                <tr><th>long</th><td>¥17,000〜</td></tr>
+                <tr><th>medium</th><td>¥16,500〜</td></tr>
+                <tr><th>short</th><td>¥15,000〜</td></tr>
+                <tr><th>retouch</th><td>¥14,500〜</td></tr>
+                <tr><th>point</th><td>¥11,000〜</td></tr>
+            </table>
+
+            <h3 class="price-category">TREATMENT</h3>
+            <table class="price-list">
+                <tr><th>treatment</th><td>¥4,000〜</td></tr>
+            </table>
+
+            <h3 class="price-category">SHAMPOO / BLOW</h3>
+            <table class="price-list">
+                <tr><th>shampoo</th><td>¥1,500</td></tr>
+                <tr><th>blow</th><td>¥2,000</td></tr>
+            </table>
+
+            <h3 class="price-category">NAIL</h3>
+            <table class="price-list">
+                <tr><th>NAIL</th><td>¥6,000〜</td></tr>
+            </table>
+
+        </div>
+    </section>
+
+    <!-- アクセス -->
+    <section id="access">
+        <h2 class="section-title">ACCESS</h2>
+        <div class="info-box">
+            <div class="access-info">
+                <p><strong>住所：</strong> 〒185-0012 国分寺市本町2-22-5 丸山マンション102号</p>
+                <p><strong>営業時間：</strong> 10:00 〜 20:00</p>
+                <p><strong>定休日：</strong> 毎週火曜日・第3水曜日</p>
+                <p><small>※国分寺駅から少し離れた場所にあるので場所が分からない場合はお気軽にお問い合わせください。</small></p>
+            </div>
+            <div class="map-container">
+                <!-- 地図画像を配置 -->
+                <img src="images/map.jpg" alt="アクセスマップ" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fmap.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            </div>
+        </div>
+    </section>
+
+    <!-- リザーブ -->
+    <section id="reserve">
+        <h2 class="section-title">RESERVE</h2>
+        <div class="info-box">
+            <div class="reserve-details">
+                <p class="reserve-phone"><strong>電話番号</strong></p>
+                <a href="tel:042-301-5050" class="tel-link">０４２－３０１－５０５０</a>
+                <p class="reserve-note">(※不定休をいただく事がございます。ご来店の際はお電話にてご予約くださいますようよろしくお願いします。）</p>
+                
+                <h3 class="reserve-heading">営業時間</h3>
+                <p>10:30～20:00　（ 日・祝日　9:30～18:00 ）</p>
+                
+                <h3 class="reserve-heading">最終受付</h3>
+                <ul class="reserve-list">
+                    <li><strong>カット</strong>  …　20:00　（ 日・祝日　18:00 ）</li>
+                    <li><strong>パーマ</strong>…　19:00　（ 日・祝日　18:00 ）</li>
+                    <li><strong>カラー</strong> …　19:00　（ 日・祝日　18:00 ）</li>
+                </ul>
+                
+                <h3 class="reserve-heading">セット</h3>
+                <p>(営業前の時間も対応しますのでご相談ください)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px 0; font-size: 12px; color: #999;">
+        &copy; 国分寺の美容室ならココ！ COCO. All Rights Reserved.
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ハンバーガーメニューの挙動
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ヘアスタイルの画像をループで生成（1.jpg 〜 13.jpg）
+        const sliderContainer = document.getElementById('slider');
+        const imageCount = 13;
+        
+        for (let i = 1; i <= imageCount; i++) {
+            const item = document.createElement('div');
+            item.className = 'slider-item';
+            
+            const img = document.createElement('img');
+            img.src = `images/${i}.jpg`;
+            img.alt = `Hair Style ${i}`;
+            // 画像が無い場合のプレースホルダー（テスト用）
+            img.onerror = function() {
+                this.src = `data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22300%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2F${i}.jpg%3C%2Ftext%3E%3C%2Fsvg%3E`;
+            };
+            
+            item.appendChild(img);
+            sliderContainer.appendChild(item);
+        }
+    </script>
+</body>
+</html>
