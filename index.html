@@ -6,7 +6,7 @@
 <title>国分寺の美容室ならココ！ | COCO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
     /* 変数とベース設定 */
     :root {
@@ -54,7 +54,7 @@
         color: var(--mustard);
         margin-bottom: 50px;
         letter-spacing: 2px;
-        font-weight: normal;
+        font-weight: 900; /* より太く変更 */
     }
 
     /* ヘッダー＆ロゴ */
@@ -187,47 +187,34 @@
         overflow: hidden;
     }
 
-    /* コンセプト（手紙風） */
+    /* コンセプト */
     .letter-wrapper {
         background-color: var(--bg-light);
-        padding: 40px 30px 40px 50px;
+        padding: 40px 30px;
         border: 1px solid #e8e4db;
         border-radius: 2px;
         box-shadow: 2px 4px 15px rgba(0,0,0,0.03);
         margin-bottom: 40px;
-        position: relative;
-        /* 便箋の横罫線を追加 */
-        background-image: repeating-linear-gradient(transparent, transparent 39px, rgba(220, 163, 50, 0.3) 39px, rgba(220, 163, 50, 0.3) 40px);
-        background-attachment: local;
-    }
-    .letter-wrapper::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 30px; bottom: 0;
-        /* 便箋の縦線（赤いアクセントのような役割）を追加 */
-        border-left: 2px double rgba(220, 163, 50, 0.4);
-        pointer-events: none;
     }
     .letter-text {
         font-size: 16px;
-        line-height: 40px; /* 罫線の間隔(40px)にテキストをピッタリ合わせる */
+        line-height: 2.2;
         color: var(--text-main);
         margin: 0;
-        padding-top: 6px; /* 文字を線の上に綺麗に乗せるための微調整 */
-    }
-    .owner-name {
-        text-align: right;
-        margin-top: 40px;
-        font-size: 18px;
+        font-weight: bold; /* 太字にする */
     }
     
     .concept-image-wrapper {
         text-align: center;
+        margin: 30px 0; /* 画像の上下に余白を追加 */
+        position: relative;
+        z-index: 1;
     }
     .concept-image {
         width: 75%; /* 75%の大きさに変更 */
         margin: 0 auto; /* 中央揃え */
         border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     /* ヘアスタイル（横スライド・額縁風） */
@@ -236,6 +223,7 @@
     }
     .slider-container {
         display: flex;
+        align-items: center; /* 画像の高さが違っても額縁が縦に伸びないようにする */
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 20px;
@@ -260,16 +248,15 @@
         scroll-snap-align: center;
         background-color: #fafafa; /* マット紙の色 */
         padding: 15px; /* マットの余白 */
-        border: 8px solid #3e2723; /* 額縁の木枠（濃い茶色） */
-        border-radius: 2px;
+        border: 12px ridge var(--mustard); /* マスタードイエローの豪華な立体枠に変更 */
+        border-radius: 4px;
         box-shadow: 4px 6px 12px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.05);
         box-sizing: border-box;
         margin: 20px 0; /* 上下に余白を追加 */
     }
     .slider-item img {
         width: 100%;
-        aspect-ratio: 3/4;
-        object-fit: cover;
+        height: auto; /* 画像の比率を維持して全体を表示するように変更 */
         display: block;
         border: 1px solid #ddd; /* 写真のエッジ */
         box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
@@ -350,7 +337,7 @@
     .tel-link {
         display: block;
         text-align: center;
-        font-size: 36px;
+        font-size: 26px; /* フォントサイズを小さく変更 */
         color: var(--mustard);
         margin-bottom: 10px;
         font-weight: bold;
@@ -370,6 +357,7 @@
         margin-top: 25px;
         margin-bottom: 10px;
         letter-spacing: 1px;
+        font-weight: bold;
     }
     .reserve-list {
         list-style: none;
@@ -379,7 +367,8 @@
     .reserve-list li {
         margin-bottom: 8px;
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* 改行されないように設定 */
+        white-space: nowrap; /* 改行されないように設定 */
     }
     .reserve-list li strong {
         display: inline-block;
@@ -429,16 +418,19 @@
         <h2 class="section-title">CONCEPT</h2>
         <div class="letter-wrapper serif">
             <p class="letter-text">
-                国分寺駅近くの路地裏にある国分寺の美容室。「時間」と「場」をコンセプトにココ！という小さなスペースをご用意させていただきました。<br>
+                国分寺駅近くの路地裏にある国分寺の美容室。「時間」と「場」をコンセプトにココ！という小さなスペースをご用意させていただきました。
+            </p>
+            
+            <div class="concept-image-wrapper">
+                <img src="images/concept.jpg" alt="オーナーの想い" class="concept-image" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fconcept.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
+            </div>
+
+            <p class="letter-text">
                 ココ！は、長年美容師として活躍してきた市塚晃一が始めた国分寺の美容室です。<br>
                 メンズからレディースまで様々な経験から得た柔軟な対応が得意です。<br>
                 皆様と一緒に豊かな時間を共有できることを心から楽しみにお待ちしております。<br>
                 あなたらしいスタイルを実現させるため、誠心誠意お手伝いさせていただきます！
             </p>
-            <p class="owner-name">市塚 晃一</p>
-        </div>
-        <div class="concept-image-wrapper">
-            <img src="images/concept.jpg" alt="オーナーの想い" class="concept-image" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fconcept.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
         </div>
     </section>
 
@@ -514,7 +506,7 @@
                 <p><strong>住所：</strong> 〒185-0012 国分寺市本町2-22-5 丸山マンション102号</p>
                 <p><strong>営業時間：</strong> 10:00 〜 20:00</p>
                 <p><strong>定休日：</strong> 毎週火曜日・第3水曜日</p>
-                <p><small>※国分寺駅から少し離れた場所にあるので場所が分からない場合はお気軽にお問い合わせください。</small></p>
+                <p><small>※国分寺駅から少し離れた場所にありますので場所が分からない場合はお気軽にお問い合わせください。</small></p>
             </div>
             <div class="map-container">
                 <!-- 地図画像を配置 -->
