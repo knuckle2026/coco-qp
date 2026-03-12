@@ -24,8 +24,10 @@
         color: var(--text-main);
         background-color: var(--bg-white);
         line-height: 1.6;
-        /* 美容室（ハサミ）のマークをうっすら背景に敷く（少し濃く変更） */
-        background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22rgba(220%2C163%2C50%2C0.15)%22%20stroke-width%3D%220.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%226%22%20cy%3D%226%22%20r%3D%223%22%3E%3C%2Fcircle%3E%3Ccircle%20cx%3D%226%22%20cy%3D%2218%22%20r%3D%223%22%3E%3C%2Fcircle%3E%3Cline%20x1%3D%2220%22%20y1%3D%224%22%20x2%3D%228.12%22%20y2%3D%2215.88%22%3E%3C%2Fline%3E%3Cline%20x1%3D%2214.47%22%20y1%3D%2214.48%22%20x2%3D%2220%22%20y2%3D%2220%22%3E%3C%2Fline%3E%3Cline%20x1%3D%228.12%22%20y1%3D%228.12%22%20x2%3D%2212%22%20y2%3D%2212%22%3E%3C%2Fline%3E%3C%2Fsvg%3E');
+        /* アップロードされたハサミの画像をうっすら背景に敷く */
+        background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('image_2b94be.png');
+        background-size: 200px;
+        background-attachment: fixed;
     }
     
     .serif {
@@ -339,11 +341,11 @@
     .tel-link {
         display: block;
         text-align: center;
-        font-size: 26px; /* フォントサイズを小さく変更 */
+        font-size: 20px; /* フォントサイズをさらに小さく変更 */
         color: var(--mustard);
         margin-bottom: 10px;
         font-weight: bold;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
     }
     .reserve-note {
         font-size: 13px;
@@ -524,7 +526,7 @@
             <div class="reserve-details">
                 <p class="reserve-phone"><strong>電話番号</strong></p>
                 <a href="tel:042-301-5050" class="tel-link">０４２－３０１－５０５０</a>
-                <p class="reserve-note">(※不定休をいただく事がございます。ご来店の際はお電話にてご予約くださいますようよろしくお願いします。）</p>
+                <p class="reserve-note">※不定休をいただく事がございます。ご来店の際はお電話にてご予約くださいますようよろしくお願いします。</p>
                 
                 <h3 class="reserve-heading">営業時間</h3>
                 <p>10:30～20:00　（ 日・祝日　9:30～18:00 ）</p>
@@ -537,7 +539,7 @@
                 </ul>
                 
                 <h3 class="reserve-heading">セット</h3>
-                <p>(営業前の時間も対応しますのでご相談ください)</p>
+                <p>営業前の時間も対応しますのでご相談ください</p>
             </div>
         </div>
     </section>
