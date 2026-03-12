@@ -12,7 +12,7 @@
     :root {
         --mustard: #dca332;
         --text-main: #333333;
-        --text-gray: #4a4a4a; /* より濃いグレーに変更 */
+        --text-gray: #4a4a4a;
         --bg-white: #ffffff;
         --bg-light: #fdfbf7;
     }
@@ -24,7 +24,6 @@
         color: var(--text-main);
         background-color: var(--bg-white);
         line-height: 1.6;
-        /* アップロードされたハサミの画像をうっすら背景に敷く */
         background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('image_2b94be.png');
         background-size: 200px;
         background-attachment: fixed;
@@ -58,7 +57,7 @@
         color: var(--mustard);
         margin-bottom: 50px;
         letter-spacing: 2px;
-        font-weight: 900; /* より太く変更 */
+        font-weight: 900;
     }
 
     /* ヘッダー＆ロゴ */
@@ -84,12 +83,12 @@
     }
     .logo-small {
         display: block;
-        font-size: 16px; /* サイズを大きく変更 */
+        font-size: 16px;
         letter-spacing: 1px;
     }
     .logo-large {
         display: block;
-        font-size: 36px; /* サイズを大きく変更 */
+        font-size: 36px;
         letter-spacing: 2px;
     }
 
@@ -106,7 +105,7 @@
         position: absolute;
         height: 2px;
         width: 100%;
-        background-color: var(--mustard); /* マスタードイエローに変更 */
+        background-color: var(--mustard);
         transition: 0.3s;
     }
     .hamburger span:nth-child(1) { top: 0; }
@@ -155,11 +154,11 @@
     .nav-menu a {
         font-size: 20px;
         letter-spacing: 2px;
-        color: var(--mustard); /* マスタードイエローに変更 */
+        color: var(--mustard);
         transition: color 0.3s;
     }
     .nav-menu a:hover {
-        color: #c48f2a; /* ホバー時は少し濃いイエローに */
+        color: #c48f2a;
     }
 
     /* トップエリア */
@@ -173,7 +172,7 @@
     }
     .catchphrase {
         color: var(--text-gray);
-        font-size: 36px; /* サイズを大きく変更 */
+        font-size: 36px;
         line-height: 1.8;
         text-align: center;
         margin-top: 5vh;
@@ -181,7 +180,7 @@
     }
     @media (max-width: 600px) {
         .catchphrase {
-            font-size: 24px; /* スマホサイズでも大きく変更 */
+            font-size: 24px;
         }
     }
     .main-image {
@@ -189,6 +188,121 @@
         max-width: 800px;
         border-radius: 4px;
         overflow: hidden;
+    }
+
+    /* お知らせ（News）エリア */
+    .news-wrapper {
+        width: 100%;
+        max-width: 800px;
+        margin-top: 40px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        box-sizing: border-box;
+    }
+    .news-wrapper h3 {
+        color: var(--mustard);
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #fcfaf5;
+        padding-bottom: 5px;
+    }
+    .news-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .news-item {
+        display: flex;
+        border-bottom: 1px dashed #eee;
+        padding: 15px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .news-item:hover {
+        background-color: #fdfbf7;
+    }
+    .news-item:last-child {
+        border-bottom: none;
+    }
+    .news-date {
+        flex: 0 0 120px;
+        color: var(--text-gray);
+        font-size: 14px;
+    }
+    .news-title {
+        flex: 1;
+        font-weight: bold;
+        color: var(--text-main);
+    }
+    .news-loading, .news-error {
+        text-align: center;
+        color: var(--text-gray);
+        padding: 20px;
+    }
+
+    /* モーダル（ポップアップ） */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal-overlay.active {
+        display: flex;
+    }
+    .modal-content {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--text-gray);
+        line-height: 1;
+    }
+    .modal-close:hover {
+        color: var(--text-main);
+    }
+    .modal-date {
+        color: var(--text-gray);
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .modal-title {
+        font-size: 22px;
+        color: var(--mustard);
+        margin-top: 0;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #fcfaf5;
+        padding-bottom: 10px;
+    }
+    .modal-body {
+        line-height: 1.8;
+    }
+    /* microCMSの本文に含まれる画像やタグへの対応 */
+    .modal-body img {
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
     }
 
     /* コンセプト */
@@ -205,29 +319,29 @@
         line-height: 2.2;
         color: var(--text-main);
         margin: 0;
-        font-weight: bold; /* 太字にする */
+        font-weight: bold;
     }
     
     .concept-image-wrapper {
         text-align: center;
-        margin: 30px 0; /* 画像の上下に余白を追加 */
+        margin: 30px 0;
         position: relative;
         z-index: 1;
     }
     .concept-image {
-        width: 75%; /* 75%の大きさに変更 */
-        margin: 0 auto; /* 中央揃え */
+        width: 75%;
+        margin: 0 auto;
         border-radius: 4px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     /* ヘアスタイル（横スライド・額縁風） */
     .slider-wrapper {
-        margin: 40px -20px; /* スワイプエリアの上下に余白を設ける */
+        margin: 40px -20px;
     }
     .slider-container {
         display: flex;
-        align-items: center; /* 画像の高さが違っても額縁が縦に伸びないようにする */
+        align-items: center;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         gap: 20px;
@@ -250,19 +364,19 @@
         flex: 0 0 70%;
         max-width: 280px;
         scroll-snap-align: center;
-        background-color: #fafafa; /* マット紙の色 */
-        padding: 15px; /* マットの余白 */
-        border: 12px ridge var(--mustard); /* マスタードイエローの豪華な立体枠に変更 */
+        background-color: #fafafa;
+        padding: 15px;
+        border: 12px ridge var(--mustard);
         border-radius: 4px;
         box-shadow: 4px 6px 12px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.05);
         box-sizing: border-box;
-        margin: 20px 0; /* 上下に余白を追加 */
+        margin: 20px 0;
     }
     .slider-item img {
         width: 100%;
-        height: auto; /* 画像の比率を維持して全体を表示するように変更 */
+        height: auto;
         display: block;
-        border: 1px solid #ddd; /* 写真のエッジ */
+        border: 1px solid #ddd;
         box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
     }
 
@@ -290,7 +404,7 @@
     .price-list {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 20px; /* リスト下の余白を広めに */
+        margin-bottom: 20px;
     }
     .price-list th, .price-list td {
         padding: 15px 10px;
@@ -314,13 +428,12 @@
         line-height: 2;
     }
     
-    /* マップコンテナのCSSを画像用に変更 */
     .map-container {
         width: 100%;
         text-align: center;
     }
     .map-container img {
-        width: 100%; /* マップ画像を100%に変更 */
+        width: 100%;
         margin: 0 auto;
         height: auto;
         display: block;
@@ -341,7 +454,7 @@
     .tel-link {
         display: block;
         text-align: center;
-        font-size: 20px; /* フォントサイズをさらに小さく変更 */
+        font-size: 20px;
         color: var(--mustard);
         margin-bottom: 10px;
         font-weight: bold;
@@ -371,12 +484,12 @@
     .reserve-list li {
         margin-bottom: 8px;
         display: flex;
-        flex-wrap: nowrap; /* 改行されないように設定 */
-        white-space: nowrap; /* 改行されないように設定 */
+        flex-wrap: nowrap;
+        white-space: nowrap;
     }
     .reserve-list li strong {
         display: inline-block;
-        width: 80px; /* 見出しの幅を揃える */
+        width: 80px;
     }
 </style>
 </head>
@@ -415,7 +528,25 @@
         <div class="main-image">
             <img src="images/main.jpg" alt="国分寺の美容室 ココ！ メインイメージ" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fmain.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
         </div>
+        
+        <!-- お知らせエリア -->
+        <div class="news-wrapper">
+            <h3>お知らせ</h3>
+            <div id="news-container">
+                <div class="news-loading">読み込み中...</div>
+            </div>
+        </div>
     </section>
+
+    <!-- お知らせモーダル -->
+    <div class="modal-overlay" id="news-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <div class="modal-date" id="modal-date"></div>
+            <h4 class="modal-title" id="modal-title"></h4>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
 
     <!-- コンセプト -->
     <section id="concept">
@@ -550,7 +681,7 @@
 
     <!-- JavaScript -->
     <script>
-        // ハンバーガーメニューの挙動
+        // --- ハンバーガーメニューの挙動 ---
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -567,7 +698,7 @@
             });
         });
 
-        // ヘアスタイルの画像をループで生成（1.jpg 〜 13.jpg）
+        // --- ヘアスタイルの画像をループで生成 ---
         const sliderContainer = document.getElementById('slider');
         const imageCount = 13;
         
@@ -578,7 +709,6 @@
             const img = document.createElement('img');
             img.src = `images/${i}.jpg`;
             img.alt = `Hair Style ${i}`;
-            // 画像が無い場合のプレースホルダー（テスト用）
             img.onerror = function() {
                 this.src = `data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22300%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2F${i}.jpg%3C%2Ftext%3E%3C%2Fsvg%3E`;
             };
@@ -586,6 +716,95 @@
             item.appendChild(img);
             sliderContainer.appendChild(item);
         }
+
+        // --- microCMSからお知らせを取得して表示 ---
+        const apiKey = 'NZ8dVdUenjXm1NdvlsXBKTAEqCoMjnGeXWXb'; // 提供されたAPIキー
+        // サービスID「barinfo」、エンドポイント「coco-qp」に変更しました
+        const endpointUrl = 'https://barinfo.microcms.io/api/v1/coco-qp'; 
+        
+        const newsContainer = document.getElementById('news-container');
+        const modalOverlay = document.getElementById('news-modal');
+        const modalClose = document.getElementById('modal-close');
+        const modalDate = document.getElementById('modal-date');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+
+        // 日付フォーマット関数
+        const formatDate = (dateString) => {
+            const date = new Date(dateString);
+            return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+        };
+
+        // モーダルを開く処理
+        const openModal = (item) => {
+            modalDate.textContent = formatDate(item.publishedAt || item.createdAt);
+            modalTitle.textContent = item.title;
+            // 本文はリッチエディタ（HTML）を想定
+            modalBody.innerHTML = item.body || '<p>本文がありません。</p>'; 
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 背景のスクロール防止
+        };
+
+        // モーダルを閉じる処理
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // APIからデータを取得
+        fetch(endpointUrl, {
+            headers: {
+                'X-MICROCMS-API-KEY': apiKey
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('ネットワークエラーが発生しました');
+            }
+            return response.json();
+        })
+        .then(data => {
+            newsContainer.innerHTML = ''; // ローディング表示をクリア
+            const ul = document.createElement('ul');
+            ul.className = 'news-list';
+
+            if (data.contents.length === 0) {
+                newsContainer.innerHTML = '<div class="news-loading">現在お知らせはありません。</div>';
+                return;
+            }
+
+            data.contents.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'news-item';
+                
+                const dateDiv = document.createElement('div');
+                dateDiv.className = 'news-date';
+                dateDiv.textContent = formatDate(item.publishedAt || item.createdAt);
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'news-title';
+                titleDiv.textContent = item.title;
+                
+                li.appendChild(dateDiv);
+                li.appendChild(titleDiv);
+                
+                // クリックイベントでモーダルを開く
+                li.addEventListener('click', () => openModal(item));
+                
+                ul.appendChild(li);
+            });
+            
+            newsContainer.appendChild(ul);
+        })
+        .catch(error => {
+            console.error('Error fetching microCMS data:', error);
+            newsContainer.innerHTML = `<div class="news-error">お知らせの読み込みに失敗しました。<br><small>※実際のAPIエンドポイント名が正しいかご確認ください。</small></div>`;
+        });
     </script>
 </body>
 </html>
