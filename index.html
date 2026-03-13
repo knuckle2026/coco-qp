@@ -669,9 +669,9 @@
                 
                 <h3 class="reserve-heading">最終受付</h3>
                 <ul class="reserve-list">
-                    <li><strong>カット</strong>  …　20:00　（ 日・祝日　18:00 ）</li>
-                    <li><strong>パーマ</strong>…　19:00　（ 日・祝日　18:00 ）</li>
-                    <li><strong>カラー</strong> …　19:00　（ 日・祝日　18:00 ）</li>
+                    <li><strong>カット</strong> … 20:00 （ 日・祝日 18:00 ）</li>
+                    <li><strong>パーマ</strong>… 19:00 （ 日・祝日 18:00 ）</li>
+                    <li><strong>カラー</strong> … 19:00 （ 日・祝日 18:00 ）</li>
                 </ul>
                 
                 <h3 class="reserve-heading">セット</h3>
@@ -681,6 +681,9 @@
     </section>
 
     <footer style="text-align: center; padding: 40px 0; font-size: 12px; color: #999;">
+        <div style="margin-bottom: 10px;">
+            <a href="http://www.coco-qp.com/" target="_blank" rel="noopener noreferrer" style="color: var(--mustard); text-decoration: underline;">旧サイトはこちら</a>
+        </div>
         &copy; 国分寺の美容室ならココ！ COCO. All Rights Reserved.
     </footer>
 
@@ -742,7 +745,8 @@
 
         // モーダルを開く処理
         const openModal = (item) => {
-            modalDate.textContent = formatDate(item.publishedAt || item.createdAt);
+            // カスタムフィールドのdateがあれば優先、無ければpublishedAtかcreatedAtを使用
+            modalDate.textContent = formatDate(item.date || item.publishedAt || item.createdAt);
             modalTitle.textContent = item.title;
             // 本文はリッチエディタ（HTML）を想定
             modalBody.innerHTML = item.body || '<p>本文がありません。</p>'; 
@@ -789,7 +793,8 @@
                 
                 const dateDiv = document.createElement('div');
                 dateDiv.className = 'news-date';
-                dateDiv.textContent = formatDate(item.publishedAt || item.createdAt);
+                // カスタムフィールドのdateがあれば優先、無ければpublishedAtかcreatedAtを使用
+                dateDiv.textContent = formatDate(item.date || item.publishedAt || item.createdAt);
                 
                 const titleDiv = document.createElement('div');
                 titleDiv.className = 'news-title';
