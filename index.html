@@ -191,7 +191,7 @@
         overflow: hidden;
     }
 
-    /* お知らせ（News）エリア */
+    /* お知らせ（News）エリア (元のCSSを残す) */
     .news-wrapper {
         width: 100%;
         max-width: 800px;
@@ -236,7 +236,48 @@
         padding: 20px;
     }
 
-    /* モーダル（ポップアップ） */
+    /* ミニマルなインスタリンク (サイズを調整しました) */
+    .instagram-wrapper {
+        margin-top: 50px;
+        text-align: center;
+        width: 100%;
+    }
+    .instagram-link-minimal {
+        display: inline-flex;
+        align-items: center;
+        gap: 15px; /* 間隔を少し広く */
+        font-size: 22px; /* テキストを大きく */
+        color: var(--text-main);
+        text-decoration: none;
+        padding-bottom: 5px;
+        position: relative;
+        font-family: 'Noto Serif JP', serif;
+        letter-spacing: 2px;
+    }
+    .instagram-link-minimal::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--mustard);
+        transition: width 0.4s ease;
+    }
+    .instagram-link-minimal:hover::after {
+        width: 100%;
+    }
+    .instagram-icon-minimal {
+        width: 28px; /* アイコンを大きく */
+        height: 28px; /* アイコンを大きく */
+        stroke: var(--mustard);
+        transition: transform 0.4s ease;
+    }
+    .instagram-link-minimal:hover .instagram-icon-minimal {
+        transform: translateY(-3px);
+    }
+
+    /* モーダル（ポップアップ） (元のCSSを残す) */
     .modal-overlay {
         display: none;
         position: fixed;
@@ -445,7 +486,7 @@
     .reserve-details {
         line-height: 2;
         color: var(--text-main);
-        text-align: center; /* 全体を中央寄せに変更 */
+        text-align: center;
     }
     .reserve-phone {
         font-size: 16px;
@@ -478,9 +519,9 @@
     .reserve-list {
         list-style: none;
         padding: 0;
-        margin: 0 auto; /* 中央寄せ */
-        display: inline-block; /* 親要素のtext-align: centerで中央に配置させる */
-        text-align: left; /* リスト内のテキストは左揃えにして整える */
+        margin: 0 auto;
+        display: inline-block;
+        text-align: left;
     }
     .reserve-list li {
         margin-bottom: 8px;
@@ -499,7 +540,6 @@
 </head>
 <body>
 
-    <!-- ヘッダー -->
     <header class="header">
         <a href="#top" class="logo">
             <span class="logo-small">国分寺の美容室なら</span>
@@ -512,7 +552,6 @@
         </div>
     </header>
 
-    <!-- ナビゲーションメニュー -->
     <nav class="nav-menu" id="nav-menu">
         <ul>
             <li><a href="#top" class="nav-link">TOP</a></li>
@@ -524,7 +563,6 @@
         </ul>
     </nav>
 
-    <!-- トップエリア -->
     <section id="top">
         <h1 class="catchphrase serif">
             ヘアスタイルや髪質などで<br>お悩みならご相談ください。
@@ -533,15 +571,18 @@
             <img src="images/main.jpg" alt="国分寺の美容室 ココ！ メインイメージ" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fmain.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
         </div>
         
-        <!-- お知らせエリア -->
-        <div class="news-wrapper">
-            <div id="news-container">
-                <div class="news-loading">読み込み中...</div>
-            </div>
+        <div class="instagram-wrapper">
+            <a href="https://www.instagram.com/kokubunji_hairsalon_coco?igsh=MWNodWdtcHQ0eDlzZQ==" target="_blank" rel="noopener noreferrer" class="instagram-link-minimal">
+                <svg class="instagram-icon-minimal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                Follow us on Instagram
+            </a>
         </div>
     </section>
 
-    <!-- お知らせモーダル -->
     <div class="modal-overlay" id="news-modal">
         <div class="modal-content">
             <span class="modal-close" id="modal-close">&times;</span>
@@ -551,7 +592,6 @@
         </div>
     </div>
 
-    <!-- コンセプト -->
     <section id="concept">
         <h2 class="section-title">CONCEPT</h2>
         <div class="letter-wrapper serif">
@@ -572,17 +612,14 @@
         </div>
     </section>
 
-    <!-- ヘアスタイル -->
     <section id="hair-style">
         <h2 class="section-title">HAIR STYLE</h2>
         <div class="slider-wrapper">
             <div class="slider-container" id="slider">
-                <!-- JavaScriptで画像を動的に生成します（images/1.jpg 〜 13.jpg） -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- プライス -->
     <section id="price">
         <h2 class="section-title">PRICE</h2>
         <div class="info-box">
@@ -638,7 +675,6 @@
         </div>
     </section>
 
-    <!-- アクセス -->
     <section id="access">
         <h2 class="section-title">ACCESS</h2>
         <div class="info-box">
@@ -649,13 +685,11 @@
                 <p><small>※国分寺駅から少し離れた場所にありますので場所が分からない場合はお気軽にお問い合わせください。</small></p>
             </div>
             <div class="map-container">
-                <!-- 地図画像を配置 -->
                 <img src="images/map.jpg" alt="アクセスマップ" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22500%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23eeeeee%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-size%3D%2220%22%20fill%3D%22%23999999%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3Eimages%2Fmap.jpg%3C%2Ftext%3E%3C%2Fsvg%3E';">
             </div>
         </div>
     </section>
 
-    <!-- リザーブ -->
     <section id="reserve">
         <h2 class="section-title">RESERVE</h2>
         <div class="info-box">
@@ -676,6 +710,8 @@
                 
                 <h3 class="reserve-heading">セット</h3>
                 <p>営業前の時間も対応しますのでご相談ください</p>
+                
+                <p style="margin-top: 20px;">E-mail：<a href="mailto:cocohair5050@hotmail.com" style="color: var(--mustard);">cocohair5050@hotmail.com</a></p>
             </div>
         </div>
     </section>
@@ -687,7 +723,6 @@
         &copy; 国分寺の美容室ならココ！ COCO. All Rights Reserved.
     </footer>
 
-    <!-- JavaScript -->
     <script>
         // --- ハンバーガーメニューの挙動 ---
         const hamburger = document.getElementById('hamburger');
@@ -725,11 +760,11 @@
             sliderContainer.appendChild(item);
         }
 
-        // --- microCMSからお知らせを取得して表示 ---
-        const apiKey = 'NZ8dVdUenjXm1NdvlsXBKTAEqCoMjnGeXWXb'; // 提供されたAPIキー
-        // サービスID「barinfo」、エンドポイント「coco-qp」に変更しました
+        // --- microCMSからお知らせを取得して表示 (元のコードのまま、実行だけ止める) ---
+        const apiKey = 'NZ8dVdUenjXm1NdvlsXBKTAEqCoMjnGeXWXb'; 
         const endpointUrl = 'https://barinfo.microcms.io/api/v1/coco-qp'; 
         
+        // 元々あった newsContainer は削除されたので、エラー回避のために null 判定を入れます
         const newsContainer = document.getElementById('news-container');
         const modalOverlay = document.getElementById('news-modal');
         const modalClose = document.getElementById('modal-close');
@@ -737,35 +772,35 @@
         const modalTitle = document.getElementById('modal-title');
         const modalBody = document.getElementById('modal-body');
 
-        // 日付フォーマット関数
         const formatDate = (dateString) => {
             const date = new Date(dateString);
             return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
         };
 
-        // モーダルを開く処理
         const openModal = (item) => {
-            // カスタムフィールドのdateがあれば優先、無ければpublishedAtかcreatedAtを使用
+            if(!modalDate) return;
             modalDate.textContent = formatDate(item.date || item.publishedAt || item.createdAt);
             modalTitle.textContent = item.title;
-            // 本文はリッチエディタ（HTML）を想定
             modalBody.innerHTML = item.body || '<p>本文がありません。</p>'; 
             modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // 背景のスクロール防止
+            document.body.style.overflow = 'hidden'; 
         };
 
-        // モーダルを閉じる処理
         const closeModal = () => {
+            if(!modalOverlay) return;
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
         };
 
-        modalClose.addEventListener('click', closeModal);
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) closeModal();
-        });
+        if(modalClose) modalClose.addEventListener('click', closeModal);
+        if(modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+        }
 
-        // APIからデータを取得
+        // ▼ 読み込みをストップするため、ここだけコメントアウトしました ▼
+        /*
         fetch(endpointUrl, {
             headers: {
                 'X-MICROCMS-API-KEY': apiKey
@@ -778,7 +813,8 @@
             return response.json();
         })
         .then(data => {
-            newsContainer.innerHTML = ''; // ローディング表示をクリア
+            if(!newsContainer) return;
+            newsContainer.innerHTML = '';
             const ul = document.createElement('ul');
             ul.className = 'news-list';
 
@@ -793,7 +829,6 @@
                 
                 const dateDiv = document.createElement('div');
                 dateDiv.className = 'news-date';
-                // カスタムフィールドのdateがあれば優先、無ければpublishedAtかcreatedAtを使用
                 dateDiv.textContent = formatDate(item.date || item.publishedAt || item.createdAt);
                 
                 const titleDiv = document.createElement('div');
@@ -803,7 +838,6 @@
                 li.appendChild(dateDiv);
                 li.appendChild(titleDiv);
                 
-                // クリックイベントでモーダルを開く
                 li.addEventListener('click', () => openModal(item));
                 
                 ul.appendChild(li);
@@ -813,8 +847,9 @@
         })
         .catch(error => {
             console.error('Error fetching microCMS data:', error);
-            newsContainer.innerHTML = `<div class="news-error">お知らせの読み込みに失敗しました。<br><small>※実際のAPIエンドポイント名が正しいかご確認ください。</small></div>`;
+            if(newsContainer) newsContainer.innerHTML = `<div class="news-error">お知らせの読み込みに失敗しました。<br><small>※実際のAPIエンドポイント名が正しいかご確認ください。</small></div>`;
         });
+        */
     </script>
 </body>
 </html>
